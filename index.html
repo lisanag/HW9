@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Assignment 9</title>
+<link rel="stylesheet" href="json.css">
+</head>
+    <body>
+    <h1>Select a genre</h1>
+     <input type="button" class = "button" onclick="showAll()" value="Display all 10 songs" />
+<!--        creates form with genre options-->
+        <form>
+            <select id = "myList" onchange = "display(this.value);">
+                <option value = "none">--Select--</option>
+                <option value="Classical">Classical</option>
+                <option value = "Country">Country</option>
+                <option value="Disco">Disco</option>
+                <option value="Indie">Indie</option>
+                <option value = " Pop">Pop</option>
+                <option value = "Rock">Rock</option>
+            </select>
+        </form>
+        <p id = "title"></p>
+        <p id = "artist"></p>
+        <p id = "genre"></p>
+        <p id = "year"></p>
+   
+    </body> 
+   <script>
+    
+       //Creates 10 separate song objects
+    song1 = {
+            "title": "New Light",
+            "artist": ["John Mayer"],
+            "genre": [" Pop"],
+            "year": 2018,
+        };
+   
+    song2 = {
+            "title": "September",
+            "artist": ["Earth, Wind, & Fire"],
+            "genre": ["Disco"],
+            "year": 1978,
+        };
+   
+        
+    song3 = {
+            "title": "Mr. Blue Sky",
+            "artist": ["Electric Light Orchestra"],
+            "genre": ["Rock"],
+            "year": 1977,
+        };
+ 
+    song4 = {
+            "title": "Piano Sonata No. 11",
+            "artist": ["Wolfgang Amadeus Mozart"],
+            "genre": ["Classical"],
+            "year": 1783,
+        };
+   
+    
+    song5 = {
+            "title": "Mountain Sound",
+            "artist": "Of Monsters and Men",
+            "genre": ["Alternative", "Indie"],
+            "year": 2011,
+        };
+      
+     song6 = {
+            "title": "Cold Cold Man",
+            "artist": ["Saint Motel"],
+            "genre": ["Alternative", "Indie"],
+            "year": 2014,
+        };
+    
+     song7 = {
+            "title": "The Middle",
+            "artist": ["Jimmy Eat World"],
+            "genre": ["Rock", " Pop"],
+            "year": 2001,
+        };
+        
+        
+     song8 = {
+            "title": "Can't Stop the Feeling!",
+            "artist": ["Justin Timberlake", " Max Martin", " Johan Schuster"],
+            "genre": [" Pop"],
+            "year": 2011,
+        };
+        
+     song9 = {
+            "title": "Blue Ain't Your Color",
+            "artist": ["Keith Urban"],
+            "genre": ["Country"],
+            "year": 2016,
+     };
+        
+    song10 = {
+            "title": "Need You Now",
+            "artist": ["Lady Antebellum"],
+            "genre": ["Country"],
+            "year": 2010,
+        };
+  
+        
+       //creates an array with the 10 individual songs as elements
+        var songarr = new Array();
+		songarr.push(song1, song2, song3, song4, song5, song6, song7, song8, song9, song10);
+        
+       //Prints all serialized JSON songs
+        document.write("<h2>Serialized JSON</h2>")
+        for(var i = 0; i < songarr.length; i++){
+                //Stringify serilaizes javascript object into JSON string
+                strSong = JSON.stringify(songarr[i]);
+                document.write(strSong + "<br>");
+		}
+        
+  
+    //displays songs in chosen genre based on selection in dropdown
+     function display(chosen){
+          var chosen = document.getElementById("myList").value
+			for(i = 0; i < songarr.length; i++){
+				strsong1 = JSON.stringify(songarr[i]);
+                //pasrse deserializes JSON string into JS object
+                jsonsong1 = JSON.parse(strsong1);
+				if(jsonsong1["genre"].includes(chosen)){
+						document.write("<br>" + jsonsong1["title"].bold() + "<br>");
+						document.write(jsonsong1["artist"]+ "<br>");
+						document.write(jsonsong1["genre"]+ "<br>");
+						document.write(jsonsong1["year"]+ "<br>");
+					}
+				}
+     }
+    
+    //displays all songs in user friendly format
+    function showAll(){
+    for(i = 0; i < songarr.length; i++){
+                strsong1 = JSON.stringify(songarr[i]);
+                //pasrse deserializes JSON string into JS object
+                jsonsong1 = JSON.parse(strsong1);
+                document.write("<br>" + jsonsong1["title"].bold() + "<br>");
+						document.write(jsonsong1["artist"]+ "<br>");
+						document.write(jsonsong1["genre"]+ "<br>");
+						document.write(jsonsong1["year"]+ "<br>");
+        }
+    }
+    </script>
+    </html>

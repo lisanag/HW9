@@ -12,6 +12,7 @@
         <form>
             <select id = "myList" onchange = "display(this.value);">
                 <option value = "none">--Select--</option>
+                <option value = "Alternative">Alternative</option>
                 <option value="Classical">Classical</option>
                 <option value = "Country">Country</option>
                 <option value="Disco">Disco</option>
@@ -125,9 +126,9 @@
                 jsonsong1 = JSON.parse(strsong1);
 				if(jsonsong1["genre"].includes(chosen)){
 						document.write("<br>" + jsonsong1["title"].bold() + "<br>");
-						document.write(jsonsong1["artist"]+ "<br>");
-						document.write(jsonsong1["genre"]+ "<br>");
-						document.write(jsonsong1["year"]+ "<br>");
+						document.write("Artist: " + jsonsong1["artist"]+ "<br>");
+						document.write("Genre: " + jsonsong1["genre"]+ "<br>");
+						document.write("Released " + jsonsong1["year"]+ "<br>");
 					}
 				}
      }
@@ -139,9 +140,9 @@
                 //pasrse deserializes JSON string into JS object
                 jsonsong1 = JSON.parse(strsong1);
                 document.write("<br>" + jsonsong1["title"].bold() + "<br>");
-						document.write(jsonsong1["artist"]+ "<br>");
-						document.write(jsonsong1["genre"]+ "<br>");
-						document.write(jsonsong1["year"]+ "<br>");
+						document.write("Artist: " + jsonsong1["artist"]+ "<br>");
+						document.write("Genre: " + jsonsong1["genre"]+ "<br>");
+						document.write("Released " + jsonsong1["year"]+ "<br>");
         }
     }
     </script>
